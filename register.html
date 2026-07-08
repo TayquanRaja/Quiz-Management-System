@@ -1,0 +1,521 @@
+<!-- register.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizVerse - Registration</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="register.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- FAVICON (browser tab icon) -->
+    <link rel="icon" type="image/png" href="quizverse-logo.png">    
+  
+   
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <div class="logo-box">
+                  <img src="quizverse-logo.png" alt="QuizVerse Logo">
+            </div>
+
+            <h2>QuizVerse</h2>
+
+        </div>
+
+      
+  <div class="right-nav-group">
+
+        <nav class="topbar-nav-links">
+
+           
+        <!-- LOGIN BUTTON (RIGHT END) -->
+        <a href="login.php" class="login-btn">
+    Login
+</a>
+
+    </div>
+
+    </header>
+
+    <!-- ================= MAIN SECTION ================= -->
+ <!-- ALERT MESSAGE -->
+          <div id="alertBox" class="alert-box"></div>
+    <section class="main-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="left-side">
+
+            <span class="tag">
+                Smart Learning Platform
+            </span>
+
+            <h1>
+                CREATE YOUR
+                <span>ACCOUNT</span>
+            </h1>
+
+            <p>
+                Join our modern online quiz management system
+                for interactive learning, quizzes, and progress tracking.
+            </p>
+
+            <div class="feature-boxes">
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <div>
+                        <h3>Students</h3>
+                        <p>Attempt quizzes and track progress.</p>
+                    </div>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-chalkboard-user"></i>
+
+                    <div>
+                        <h3>Teachers</h3>
+                        <p>Create quizzes and upload materials.</p>
+                    </div>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    <div>
+                        <h3>Admins</h3>
+                        <p>Manage users and system records.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="register-card">
+
+            <h2>Sign Up</h2>
+
+            <p class="subtitle">
+                Fill the form to create your account
+            </p>
+
+            <!-- GOOGLE BUTTON -->
+
+            <button class="google-btn">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png">
+
+                Continue with Google
+
+            </button>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <!-- FORM -->
+            
+
+            <form id="registerForm" action="register.php" method="POST">
+
+                <!-- NAME -->
+
+                
+                <div class="input-group">
+
+                    <label>
+                        Full Name <span>*</span>
+                    </label>
+
+                    <input type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        maxlength="50">
+
+                    <small class="error"></small>
+
+                </div>
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label>
+                        Email Address <span>*</span>
+                    </label>
+
+                    <input type="email"
+                        id="email"
+                         name="email"
+                        placeholder="Enter your email">
+
+                    <small class="error"></small>
+
+                </div>
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label>
+                        Password <span>*</span>
+                    </label>
+
+                    <div class="password-box">
+
+                        <input type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Minimum 8 characters">
+
+                        <i class="fa-solid fa-eye togglePassword"></i>
+
+                    </div>
+
+                   <small class="hint">
+    Password must contain:
+    8+ characters, uppercase, lowercase,
+    number and special character
+</small>
+<small class="password-live-error"></small>
+                
+
+                </div>
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="input-group">
+
+                    <label>
+                        Confirm Password <span>*</span>
+                    </label>
+
+                    <div class="password-box">
+
+                        <input type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Confirm password">
+
+                        <i class="fa-solid fa-eye togglePassword"></i>
+
+                    </div>
+
+                    <small class="error"></small>
+
+                </div>
+
+                <!-- ROLE -->
+
+                <div class="input-group">
+
+                    <label>
+                        Select Role <span>*</span>
+                    </label>
+
+                    <select id="role" name="role">
+
+                        <option value="">
+                            Choose your role
+                        </option>
+
+                        <option value="student">
+                            Student
+                        </option>
+
+                        <option value="teacher">
+                            Teacher
+                        </option>
+
+                       
+
+                    </select>
+
+                    <small class="error"></small>
+
+                </div>
+<!-- SECURITY QUESTION -->
+
+<div class="input-group">
+
+    <label>
+        Security Question <span>*</span>
+    </label>
+
+    <select id="security_question" name="security_question">
+
+        <option value="">
+            Choose a security question
+        </option>
+
+        <option value="pet">
+            What is your first pet name?
+        </option>
+
+        <option value="school">
+            What was your first school name?
+        </option>
+
+        <option value="first_teacher">
+    What is your first teacher’s name?
+</option>
+        <option value="city">
+            In which city were you born?
+        </option>
+
+ <option value="favorite_food">
+        What is your favorite food?
+    </option>
+
+    <option value="best_friend">
+        What is your best friend’s name?
+    </option>
+
+    </select>
+
+    <small class="error"></small>
+
+</div>
+
+<!-- SECURITY ANSWER -->
+
+<div class="input-group">
+
+    <label>
+        Security Answer <span>*</span>
+    </label>
+
+    <input type="text"
+        id="security_answer"
+        name="security_answer"
+        placeholder="Enter your answer">
+
+    <small class="error"></small>
+
+</div>
+                <!-- TERMS -->
+
+                <div class="terms">
+
+                    <input type="checkbox" id="terms">
+
+                    <label for="terms">
+                        I agree to Terms & Conditions <span>*</span>
+                    </label>
+
+                </div>
+
+                <small class="error" id="termsError"></small>
+
+                <!-- BUTTON -->
+
+                <button type="submit" class="signup-btn">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+   
+    
+<script src="register.js"></script>
+
+<!-- ================= FIREBASE GOOGLE AUTH ================= -->
+<script type="module">
+
+import {
+    initializeApp
+} from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut
+} from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+/* ================= FIREBASE CONFIG ================= */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyACujWcsoHIVQqH2PPCNSJggZP9t8BbTEA",
+
+    authDomain: "quizverse-55b62.firebaseapp.com",
+
+    projectId: "quizverse-55b62",
+
+    storageBucket: "quizverse-55b62.firebasestorage.app",
+
+    messagingSenderId: "337630471225",
+
+    appId: "1:337630471225:web:3828c9b4e35b116d0c59e8",
+
+    measurementId: "G-7YYSRZEE58"
+};
+
+/* ================= INITIALIZE ================= */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
+
+/* ================= BUTTON ================= */
+
+const googleBtn =
+document.querySelector(".google-btn");
+
+/* ================= GOOGLE LOGIN ================= */
+
+googleBtn.addEventListener("click", async () => {
+
+    const selectedRole =
+    document.getElementById("role").value;
+
+    const terms =
+    document.getElementById("terms");
+
+    // ROLE CHECK
+    if(selectedRole === ""){
+
+       showAlert(
+    "Please select a role first",
+    "error"
+);
+        return;
+    }
+
+    // TERMS CHECK
+    if(!terms.checked){
+
+      showAlert(
+    "Please accept Terms & Conditions",
+    "error"
+);
+        return;
+    }
+    try {
+
+        await signOut(auth);
+
+        provider.setCustomParameters({
+            prompt: "select_account"
+        });
+
+        const result =
+        await signInWithPopup(auth, provider);
+
+        const user = result.user;
+
+        console.log(user);
+
+        /* ================= SEND TO PHP ================= */
+
+        const formData = new FormData();
+
+        formData.append(
+            "google_name",
+            user.displayName
+        );
+
+        formData.append(
+            "google_email",
+            user.email
+        );
+
+        formData.append(
+            "google_uid",
+            user.uid
+        );
+        formData.append(
+    "google_role",
+    document.getElementById("role").value
+);
+        const response =
+        await fetch("./google_register.php", {
+
+            method: "POST",
+
+            body: formData
+
+        });
+
+        const data =
+        await response.text();
+
+        console.log(data);
+
+        if(data.trim() === "success"){
+showAlert(
+    "Welcome " +
+    user.displayName +
+    "! Registration successful.",
+    "success"
+);
+        }
+
+        else{
+
+           showAlert(data, "error");
+
+        }
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        showAlert(error.message, "error");
+
+    }
+
+});
+
+</script>
+
+<footer style="margin-top: 80px; padding: 40px; text-align: center; color: #777; border-top: 1px solid #ddd;">
+    <p>&copy; <?=date('Y')?> QuizVerse. All rights reserved.</p>
+    <p style="font-size: 13px; margin-top: 8px;">Modern online quiz management system.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,415 @@
+/* =========================================================================
+   QUIZVERSE SYSTEM - UNIVERSAL ARCHITECTURE & CORE RECONCILIATION
+   ========================================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  /* Brand Accent Colors matched to teacher portal */
+  --color-sidebar-bg: #4c5e3d; /* Forest Green */
+  --color-accent-terracotta: #a36344; /* Warm Terracotta */
+  --color-accent-hover: #8b5135; /* Darker Terracotta hover */
+  --color-primary-hover: #3d4c31; /* Darker Forest Green hover */
+
+  /* Backgrounds & Surfaces */
+  --bg: #f4ece1; /* Warm Cream Workspace Background */
+  --color-card-bg: #ffffff; /* Pure White for cards/inputs */
+
+  /* Typography & Icons */
+  --color-text-primary: #2a2421; /* Deep Charcoal Brown */
+  --color-text-secondary: #82756a; /* Muted Taupe for labels and subtitles */
+  --color-border: #e6dcce; /* Clean Neutral Border color */
+}
+
+/* ===== LIGHT THEME ===== */
+body[data-theme="light"] {
+  --bg: #f4ece1;
+  --color-card-bg: #ffffff;
+  --color-text-primary: #2a2421;
+  --color-text-secondary: #82756a;
+  --color-border: #e6dcce;
+  --color-sidebar-bg: #4c5e3d;
+  --color-accent-terracotta: #a36344;
+}
+
+/* ===== DARK THEME (DARK ONYX) ===== */
+body[data-theme="dark"] {
+  --bg: #0f141c;
+  --color-card-bg: #1b2433;
+  --color-text-primary: #f3f6fa;
+  --color-text-secondary: #a7b4c6;
+  --color-border: #2e3a4d;
+  --color-sidebar-bg: #243447;
+  --color-accent-terracotta: #d08770;
+}
+
+/* ===== BLUE FLUORESCENT THEME ===== */
+body[data-theme="blue"] {
+  --bg: #060b14;
+  --color-card-bg: #0f172a;
+  --color-text-primary: #e0f7ff;
+  --color-text-secondary: #7dd3fc;
+  --color-border: #164e63;
+  --color-sidebar-bg: #00bfff;
+  --color-accent-terracotta: #00f5ff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  padding-top: 120px; /* Space below fixed header */
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ================= HEADER / TOPBAR ================= */
+.header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: var(--color-sidebar-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  transition: background 0.3s ease;
+}
+
+/* Theme Adaptation Overrides for Nav Bar */
+body[data-theme="dark"] .header-nav {
+  background: #1b2433;
+}
+body[data-theme="blue"] .header-nav {
+  background: rgba(0, 20, 40, 0.92);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.18);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.25);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo-box img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo h2 {
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.topbar-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+}
+
+.simple-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.simple-nav-icon:hover {
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* ================= UNIFIED EXPLICIT DROPDOWNS ================= */
+.header-dropdown-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar-nav-links .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: -10px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  min-width: 180px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  padding: 6px 0;
+  flex-direction: column;
+  overflow: hidden; /* Clears ugly white bites on edges */
+}
+
+.topbar-nav-links .dropdown-menu button {
+  width: 100% !important;
+  background: transparent !important;
+  color: black !important;
+  padding: 12px 20px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  font-size: 14px;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer;
+  transition: background 0.2s ease !important;
+}
+
+.topbar-nav-links .dropdown-menu button i {
+  color: black !important;
+  width: 18px;
+  text-align: center;
+}
+
+.topbar-nav-links .dropdown-menu button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Explicit Dropdown Custom Theme Overrides */
+body[data-theme="dark"] .topbar-nav-links .dropdown-menu {
+  background: #1b2433 !important;
+  border: 1px solid #2e3a4d !important;
+}
+body[data-theme="dark"] .topbar-nav-links .dropdown-menu button {
+  color: #a7b4c6 !important;
+}
+body[data-theme="dark"] .topbar-nav-links .dropdown-menu button i {
+  color: #a7b4c6 !important;
+}
+body[data-theme="dark"] .topbar-nav-links .dropdown-menu button:hover {
+  background: #243447 !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="blue"] .topbar-nav-links .dropdown-menu {
+  background: #0f172a !important;
+  border: 1px solid #164e63 !important;
+}
+body[data-theme="blue"] .topbar-nav-links .dropdown-menu button {
+  color: #7dd3fc !important;
+}
+body[data-theme="blue"] .topbar-nav-links .dropdown-menu button i {
+  color: #7dd3fc !important;
+}
+body[data-theme="blue"] .topbar-nav-links .dropdown-menu button:hover {
+  background: #164e63 !important;
+  color: #00f5ff !important;
+}
+
+.topbar-nav-links .header-dropdown-container .dropdown-menu.show {
+  display: flex !important;
+}
+
+/* ================= LAYOUT & CARDS ================= */
+.container {
+  max-width: 1040px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.header-section h1 {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.header-section h1 span {
+  color: var(--color-accent-terracotta);
+}
+
+.header-section p {
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  max-width: 580px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Fluorescent Glow Additions */
+body[data-theme="blue"] .card {
+  box-shadow:
+    0 0 10px rgba(0, 245, 255, 0.15),
+    0 0 25px rgba(0, 191, 255, 0.08);
+  border: 1px solid rgba(0, 245, 255, 0.25) !important;
+}
+
+.card h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.feature {
+  background: var(--bg);
+  color: var(--color-text-primary);
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+/* ================= FORMS & BUTTONS ================= */
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background: var(--color-card-bg);
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-sidebar-bg);
+  box-shadow: 0 0 0 4px rgba(76, 94, 61, 0.15);
+}
+
+button[type="submit"] {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--color-accent-terracotta);
+  color: white;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+body[data-theme="blue"] button[type="submit"] {
+  background: linear-gradient(135deg, #00f5ff, #009dff);
+  color: #001018;
+}
+
+button[type="submit"]:hover {
+  background: var(--color-accent-hover);
+}
+
+/* ================= TEXT SCALING OVERRIDES ================= */
+body[data-text="small"] {
+  font-size: 13px;
+}
+body[data-text="medium"] {
+  font-size: 16px;
+}
+body[data-text="large"] {
+  font-size: 19px;
+}
+
+body[data-text="large"] h1 {
+  font-size: 48px !important;
+}
+body[data-text="large"] h2 {
+  font-size: 26px !important;
+}
+body[data-text="large"] p,
+body[data-text="large"] input,
+body[data-text="large"] textarea {
+  font-size: 16px !important;
+}
+
+/* Responsive breakpoint fallback */
+@media (max-width: 768px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .header-section h1 {
+    font-size: 32px;
+  }
+}

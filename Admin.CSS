@@ -1,0 +1,530 @@
+/* =========================================================================
+   QUIZVERSE SYSTEM - UNIVERSAL ADMIN PORTAL FRAMEWORK
+   ========================================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  /* Brand Accent Colors matched to teacher portal */
+  --color-sidebar-bg: #4c5e3d; /* Forest Green */
+  --color-accent-terracotta: #a36344; /* Warm Terracotta */
+  --color-accent-hover: #8b5135; /* Darker Terracotta hover */
+  --color-primary-hover: #3d4c31; /* Darker Forest Green hover */
+
+  /* Backgrounds & Surfaces */
+  --bg: #f5efeb; /* Warm Cream Workspace Background */
+  --color-card-bg: #ffffff; /* Pure White for cards/inputs */
+
+  /* Typography & Icons */
+  --color-text-primary: #2a2421; /* Deep Charcoal Brown */
+  --color-text-secondary: #82756a; /* Muted Taupe for labels and subtitles */
+  --color-border: #e3dacf; /* Clean Neutral Border color */
+}
+
+/* ===== LIGHT THEME ===== */
+body[data-theme="light"] {
+  --bg: #f5efeb;
+  --color-card-bg: #ffffff;
+  --color-text-primary: #2a2421;
+  --color-text-secondary: #82756a;
+  --color-border: #e3dacf;
+  --color-sidebar-bg: #4c5e3d;
+  --color-accent-terracotta: #a36344;
+}
+
+/* ===== DARK THEME (DARK ONYX) ===== */
+body[data-theme="dark"] {
+  --bg: #0f141c;
+  --color-card-bg: #1b2433;
+  --color-text-primary: #f3f6fa;
+  --color-text-secondary: #a7b4c6;
+  --color-border: #2e3a4d;
+  --color-sidebar-bg: #243447;
+  --color-accent-terracotta: #d08770;
+  --color-accent-hover: #e0967f;
+}
+
+/* ===== BLUE FLUORESCENT THEME ===== */
+body[data-theme="blue"] {
+  --bg: #060b14;
+  --color-card-bg: #0f172a;
+  --color-text-primary: #e0f7ff;
+  --color-text-secondary: #7dd3fc;
+  --color-border: #164e63;
+  --color-sidebar-bg: #00bfff;
+  --color-accent-terracotta: #00f5ff;
+  --color-accent-hover: #33f7ff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  padding-top: 120px; /* Space for the sticky navigation banner */
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ================= HEADER / TOPBAR ================= */
+.header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: var(--color-sidebar-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  transition: background 0.3s ease;
+}
+
+/* Theme Adaptation Overrides for Nav Bar */
+body[data-theme="dark"] .header-nav {
+  background: #1b2433;
+}
+body[data-theme="blue"] .header-nav {
+  background: rgba(0, 20, 40, 0.92);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.18);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.25);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo-box img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo h2 {
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.topbar-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+}
+
+.simple-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.simple-nav-icon:hover {
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.profile-icon {
+  display: none !important;
+}
+
+/* ================= UNIFIED EXPLICIT DROPDOWNS ================= */
+.header-dropdown-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar-nav-links .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: -10px;
+  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  min-width: 180px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  padding: 6px 0;
+  flex-direction: column;
+  overflow: hidden; /* Clears ugly layout corner leaks */
+}
+
+.topbar-nav-links .dropdown-menu button {
+  width: 100% !important;
+  background: transparent !important;
+  color: black !important;
+  padding: 12px 20px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  font-size: 14px;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer;
+  transition: background 0.2s ease !important;
+}
+
+.topbar-nav-links .dropdown-menu button i {
+  color: black !important;
+  width: 18px;
+  text-align: center;
+}
+
+.topbar-nav-links .dropdown-menu button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Explicit Dropdown Custom Theme Overrides to Match Reference Images */
+body[data-theme="dark"] .topbar-nav-links .dropdown-menu {
+  background: #1b2433 !important;
+  border: 1px solid #2e3a4d !important;
+}
+body[data-theme="dark"] .topbar-nav-links .dropdown-menu button {
+  color: #a7b4c6 !important;
+}
+body[data-theme="dark"] .topbar-nav-links .dropdown-menu button i {
+  color: #a7b4c6 !important;
+}
+body[data-theme="dark"] .topbar-nav-links .dropdown-menu button:hover {
+  background: #243447 !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="blue"] .topbar-nav-links .dropdown-menu {
+  background: #0f172a !important;
+  border: 1px solid #164e63 !important;
+}
+body[data-theme="blue"] .topbar-nav-links .dropdown-menu button {
+  color: #7dd3fc !important;
+}
+body[data-theme="blue"] .topbar-nav-links .dropdown-menu button i {
+  color: #7dd3fc !important;
+}
+body[data-theme="blue"] .topbar-nav-links .dropdown-menu button:hover {
+  background: #164e63 !important;
+  color: #00f5ff !important;
+}
+
+.topbar-nav-links .header-dropdown-container .dropdown-menu.show {
+  display: flex !important;
+}
+
+/* ================= TITLE BANNER ================= */
+.header-section {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.header-section h1 {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.header-section h1 span {
+  color: var(--color-accent-terracotta);
+}
+
+.header-section p {
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  max-width: 580px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* ================= MAIN CONTAINER ================= */
+.main {
+  max-width: 960px;
+  margin: auto;
+  padding: 0 20px 60px;
+}
+
+.main h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-primary);
+}
+
+#userCount {
+  color: var(--color-accent-terracotta);
+}
+
+/* ================= FORMS & BOX SURFACES ================= */
+.form-box,
+.table-box {
+  background: var(--color-card-bg);
+  padding: 30px;
+  margin-top: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body[data-theme="blue"] .form-box,
+body[data-theme="blue"] .table-box {
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.12) !important;
+  border-color: rgba(0, 245, 255, 0.2) !important;
+}
+
+.form-box h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--color-text-primary);
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 10px 0 16px 0;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background: var(--color-card-bg);
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  border-color: var(--color-sidebar-bg);
+  box-shadow: 0 0 0 4px rgba(76, 94, 61, 0.15);
+}
+
+/* ================= GLOBAL BUTTONS SYSTEM ================= */
+button {
+  padding: 11px 22px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  background: var(--color-sidebar-bg);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+button:hover {
+  background: var(--color-primary-hover);
+}
+
+body[data-theme="blue"] button:not(.danger):not(.btn-secondary) {
+  background: linear-gradient(135deg, #00f5ff, #009dff) !important;
+  color: #001018 !important;
+}
+
+.danger {
+  background: #c94a29 !important; /* Terracotta red matching standard specs */
+}
+
+.danger:hover {
+  background: #a83b1f !important;
+}
+
+.btn-secondary {
+  background: var(--bg) !important;
+  color: var(--color-text-primary) !important;
+}
+.btn-secondary:hover {
+  background: var(--color-border) !important;
+}
+
+/* ================= MODERN DATA TABLES ================= */
+.table-box {
+  padding: 15px 25px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  padding: 14px 12px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+td {
+  padding: 14px 12px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+body[data-theme="light"] tr:hover td {
+  background: var(--bg);
+}
+
+/* Custom sizing tweaks for icon-only action table buttons */
+td button {
+  width: 34px;
+  height: 34px;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; /* Smooth rounded corners */
+}
+
+td button i {
+  font-size: 14px;
+  margin: 0 !important; /* Removes padding offsets */
+}
+/* ================= MODAL WINDOW SYSTEMS ================= */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 20, 28, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+body[data-theme="dark"] .modal,
+body[data-theme="blue"] .modal {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background: var(--color-card-bg);
+  padding: 35px 30px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 18px;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  animation: modalScale 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body[data-theme="blue"] .modal-content {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.2) !important;
+  border-color: rgba(0, 245, 255, 0.3) !important;
+}
+
+.modal-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+@keyframes modalScale {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ================= TEXT SCALING OVERRIDES ================= */
+body[data-text="small"] {
+  font-size: 13px;
+}
+body[data-text="medium"] {
+  font-size: 16px;
+}
+body[data-text="large"] {
+  font-size: 19px;
+}
+
+body[data-text="large"] h1 {
+  font-size: 48px !important;
+}
+body[data-text="large"] h2,
+body[data-text="large"] .main h1 {
+  font-size: 26px !important;
+}
+body[data-text="large"] p,
+body[data-text="large"] input,
+body[data-text="large"] th,
+body[data-text="large"] td,
+body[data-text="large"] button {
+  font-size: 16px !important;
+}

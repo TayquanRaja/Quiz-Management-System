@@ -1,0 +1,766 @@
+/* ================= ROOT COLORS ================= */
+
+:root {
+
+    --color-sidebar-bg: #556B43;
+    --color-accent-terracotta: #9C5A3C;
+
+    --color-dashboard-bg: #F5EFEB;
+    --color-card-bg: #FFFFFF;
+
+    --color-text-primary: #2C2520;
+    --color-text-secondary: #7A6F66;
+
+    --color-border: #E3DACF;
+}
+
+/* ================= GLOBAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: var(--color-dashboard-bg);
+    min-height:100vh;
+
+}
+
+/* ================= NAVBAR ================= */
+
+/* ===== HEADER FIX ===== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Exact Register Padding & Height Variables */
+    padding: 0 30px;
+    height: 66px;
+
+    background: rgba(85, 107, 67, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    z-index: 1000;
+}
+
+/* LEFT LOGO EXACT MATCH */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-box {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-box img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.logo h2 {
+    font-size: 28px;
+    color: white;
+    transition: font-size 0.3s ease;
+}
+
+
+/* ================= MAIN ================= */
+
+.main-container{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:120px 8%;
+    gap:70px;
+}
+
+/* ================= LEFT ================= */
+
+.left-side{
+    flex:1;
+}
+
+.tag{
+
+    background:white;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    color: var(--color-accent-terracotta);
+
+    border:1px solid var(--color-border);
+}
+
+.left-side h1{
+
+    margin-top:25px;
+
+    font-size:70px;
+
+    line-height:1.1;
+
+    color: var(--color-text-primary);
+}
+
+.left-side h1 span{
+    color: var(--color-accent-terracotta);
+}
+
+.left-side p{
+
+    margin-top:25px;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color: var(--color-text-secondary);
+}
+
+
+
+/* ================= LOGIN CARD ================= */
+
+.login-card{
+
+    width:430px;
+     position: relative;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:35px;
+
+    border:1px solid var(--color-border);
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.06);
+}
+
+.login-card h2{
+
+    font-size:38px;
+
+    color: var(--color-text-primary);
+   margin-left: -1.5px;
+
+}
+
+.subtitle{
+
+    margin-top:8px;
+
+    color: var(--color-text-secondary);
+
+    margin-bottom:30px;
+  
+
+}
+
+/* ================= FORM ================= */
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:500;
+}
+
+.input-group label span{
+    color:red;
+}
+
+.input-group input,
+.input-group select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid var(--color-border);
+
+    border-radius:15px;
+
+    outline:none;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+
+    border-color: var(--color-sidebar-bg);
+
+    box-shadow:0 0 0 4px rgba(85,107,67,0.12);
+}
+
+/* ================= PASSWORD ================= */
+
+.password-box{
+    position:relative;
+}
+
+.password-box i{
+
+    position:absolute;
+
+    right:18px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    color: var(--color-text-secondary);
+}
+
+.forgot-link {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 18px;
+}
+
+.forgot-link a {
+    color: #9C5A3C;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.forgot-link a:hover {
+    text-decoration: underline;
+}
+/* ================= BUTTON ================= */
+
+.login-btn-main{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background: var(--color-accent-terracotta);
+
+    color:white;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.login-btn-main:hover{
+    opacity:0.9;
+}
+
+.register-link {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+    color: #7A6F66;
+}
+
+.register-link a {
+    color: #9C5A3C;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+/* ================= ERROR ================= */
+
+.error{
+
+    color:red;
+
+    font-size:13px;
+
+    margin-top:5px;
+
+    display:block;
+}
+
+.toast {
+    position: fixed;
+    top: 70px;              /* header ke neeche */
+    left: 0;
+    width: 100%;
+
+    background: #e74c3c;
+    color: white;
+    padding: 14px;
+    text-align: center;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+
+    transition: all 0.3s ease;
+
+    z-index: 99999;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+  .alert-error-box{
+
+    background: #ffeaea;
+    color: #c0392b;
+
+    padding: 14px;
+    margin-bottom: 18px;
+
+    border-radius: 12px;
+
+    border-left: 5px solid #dc3545;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back-arrow {
+    position: absolute;
+
+    top: 25px;
+    left: 25px;
+
+    text-decoration: none;
+
+    color: #2C2520;
+    font-size: 20px;
+
+    background: transparent;
+    box-shadow: none;
+
+    transition: 0.2s;
+     z-index: 10;
+}
+
+.back-arrow:hover {
+    transform: scale(1.1);
+}
+
+.success-box{
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:#eef8f0;
+
+    border:1px solid #b7e4c7;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+     color:#2e7d32;
+    font-weight:500;
+}
+
+.success-box i{
+    color:#2e7d32;
+    font-size:22px;
+    margin-top:2px;
+}
+
+.success-title{
+    color:#2e7d32;
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.success-box a{
+    color:#9C5A3C;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.success-box a:hover{
+    text-decoration:underline;
+}
+.forgot-page .page-content,
+.reset-page .page-content {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   /* FIX: not flex-start */
+    padding: 110px 20px 40px;
+    box-sizing: border-box;
+}
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* ---------- LARGE TABLETS ---------- */
+
+@media (max-width: 1100px) {
+
+    .main-container{
+        flex-direction: column;
+        padding: 120px 40px 60px;
+        gap: 40px;
+    }
+
+    .left-side{
+        text-align: center;
+    }
+
+    .left-side h1{
+        font-size: 55px;
+    }
+
+    .left-side p{
+        font-size: 17px;
+    }
+
+    .login-card{
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+/* ---------- TABLETS ---------- */
+
+/* ---------- TABLETS ---------- */
+
+@media (max-width: 768px) {
+
+    .navbar{
+        padding: 0 18px;
+        height: 62px;
+    }
+
+    .logo h2{
+        font-size: 24px;
+    }
+
+    .logo-box{
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-box img{
+        width: 26px;
+        height: 26px;
+    }
+
+    .main-container{
+        padding: 100px 20px 40px;
+        gap: 25px; /* ADD THIS */
+    }
+
+    .left-side h1{
+        font-size: 42px;
+        margin-top: 15px; /* ADD THIS */
+    }
+
+    .left-side p{
+        font-size: 16px;
+        line-height: 1.7;
+
+        margin-top: 10px;   /* ADD THIS */
+        margin-bottom: 0;   /* ADD THIS */
+    }
+
+    .tag{
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .login-card{
+        padding: 35px 28px;
+        border-radius: 28px;
+
+        margin-top: -10px; /* ADD THIS */
+    }
+}
+
+/* ---------- MOBILE PHONES ---------- */
+
+@media (max-width: 480px) {
+
+    .navbar{
+        padding: 0 14px;
+        height: 58px;
+    }
+
+    .logo{
+        gap: 8px;
+    }
+
+    .logo h2{
+        font-size: 20px;
+    }
+
+    .logo-box{
+        width: 28px;
+        height: 28px;
+    }
+
+    .logo-box img{
+        width: 24px;
+        height: 24px;
+    }
+
+    .main-container{
+        padding: 90px 14px 30px;
+        gap: 25px;
+    }
+
+    .left-side h1{
+        font-size: 34px;
+    }
+
+    .left-side p{
+        font-size: 14px;
+    }
+
+    .tag{
+        font-size: 12px;
+        padding: 7px 14px;
+    }
+
+   .login-card{
+        width: calc(100% - 30px);
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+
+        padding: 35px 22px;
+        border-radius: 25px;
+    }
+
+
+    .login-card h2{
+        font-size: 28px;
+    }
+
+    .subtitle{
+        font-size: 13px;
+        margin-bottom: 22px;
+    }
+
+    .input-group{
+        margin-bottom: 16px;
+    }
+
+    .input-group label{
+        font-size: 14px;
+    }
+
+    .input-group input,
+    .input-group select{
+        padding: 13px;
+        border-radius: 12px;
+        font-size: 14px;
+    }
+
+    .password-box i{
+        right: 14px;
+        font-size: 14px;
+    }
+
+    .forgot-link a{
+        font-size: 13px;
+    }
+
+    .login-btn-main{
+        padding: 13px;
+        border-radius: 14px;
+        font-size: 14px;
+    }
+
+    .register-link{
+        font-size: 13px;
+    }
+
+    .back-arrow{
+        top: 18px;
+        left: 18px;
+        font-size: 18px;
+    }
+
+    .success-box{
+        padding: 14px;
+        font-size: 13px;
+        border-radius: 14px;
+    }
+
+    footer{
+        padding: 20px 10px !important;
+    }
+
+    footer p{
+        font-size: 12px !important;
+    }
+}
+@media (max-width: 768px) {
+
+ .forgot-page .page-content,
+    .reset-page .page-content {
+        align-items: center;   /* override flex-start */
+        padding-top: 90px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    
+    .forgot-page .login-card,
+    .reset-page .login-card {
+        width: 100%;
+           max-width: 450px;
+        margin: 0;
+        padding: 30px 25px;
+        border-radius: 25px;
+    }
+
+    .forgot-page .login-card h2,
+    .reset-page .login-card h2 {
+        font-size: 30px;
+    }
+
+    .forgot-page .input-group input,
+    .reset-page .input-group input {
+        font-size: 14px;
+        padding: 13px;
+    }
+
+    .forgot-page .login-btn-main,
+    .reset-page .login-btn-main {
+        padding: 13px;
+        font-size: 15px;
+    }
+
+    .forgot-page .back-arrow,
+    .reset-page .back-arrow {
+        top: 18px;
+        left: 18px;
+        font-size: 18px;
+    }
+}
+@media (max-width: 480px) {
+
+    /* PAGE LAYOUT FIX (IMPORTANT) */
+    .forgot-page .page-content,
+    .reset-page .page-content {
+        align-items: center;     /* FIX: form shift issue */
+        padding-top: 75px;       /* header balance */
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* CARD FIX */
+    .forgot-page .login-card,
+    .reset-page .login-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 22px 16px;
+        border-radius: 18px;
+        margin: 0;
+    }
+
+    /* TITLE */
+    .forgot-page .login-card h2,
+    .reset-page .login-card h2 {
+        font-size: 22px;
+    }
+
+    /* SUBTITLE */
+    .forgot-page .subtitle,
+    .reset-page .subtitle {
+        font-size: 12px;
+        margin-bottom: 18px;
+    }
+
+    /* INPUT FIX */
+    .forgot-page .input-group input,
+    .reset-page .input-group input {
+        font-size: 13px;
+        padding: 12px;
+        width: 100%;
+        box-sizing: border-box;  /* IMPORTANT FIX */
+    }
+
+    /* BUTTON */
+    .forgot-page .login-btn-main,
+    .reset-page .login-btn-main {
+        font-size: 14px;
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    /* ERROR TEXT */
+    .forgot-page .error,
+    .reset-page .error {
+        font-size: 11px;
+    }
+
+    /* ALERT BOX */
+    .forgot-page .alert-error-box,
+    .reset-page .alert-error-box {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    /* SUCCESS BOX */
+    .forgot-page .success-box,
+    .reset-page .success-box {
+        font-size: 12px;
+        padding: 10px;
+        flex-direction: column;  /* IMPORTANT: prevents layout break */
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    /* BACK BUTTON */
+    .forgot-page .back-arrow,
+    .reset-page .back-arrow {
+        top: 12px;
+        left: 12px;
+        font-size: 16px;
+    }
+}
